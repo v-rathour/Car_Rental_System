@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+<h1>Book This Car</h1>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+   
+
+
+    <form action="/bookthiscar" method="POST">
+      <img style="height: 200px; width: 200px;" class="img" src="<%=car.img%>" class="card-img-top" alt="...">
+      <h5 class="fadeIn second">Model: <%=car.model%></h5>
+      <p class="fadeIn third">Number: <%=car.number%></p>
+      <p class="fadeIn third">Rent: INR <%=car.rent%> /day</p>
+      <p class="fadeIn third">Status:<%=car.status%></p>
+      <p class="fadeIn third">Capacity:<%=car.capacity%></p>
+      <label for="startdate">Bookfrom:</label>
+      <input type="date" id="startdate" name="startdate">
+      <br />
+      <label for="days">No. of Days(1 to 10):</label>
+      <input type="number" id="days" name="days" min="1" max="10">
+      <input type="hidden" name="agency" value="<%=car.agency%>">
+      <input type="hidden" name="model" value="<%=car.model%>">
+      <input type="hidden" name="number" value="<%=car.number%>">
+      <input type="hidden" name="rent" value="<%=car.rent%>">
+      <input type="hidden" name="img" value="<%=car.img%>">
+      <input type="hidden" name="capacity" value="<%=car.capacity%>">
+      <button role="button" type="submit" value="<%=car._id%>" name="book" class="fadeIn fourth btn btn-primary">Book</button>
+
+    </form>
+
+  </div>
+</div>
+<a role="button" class="btn btn-primary" href="/userdashboard">Dashboard</a>
+<%- include('partials/footer') %>

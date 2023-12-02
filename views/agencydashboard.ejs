@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+
+ 
+  <%if(cars.length == 0){%>
+    <p>Sorry! You have not listed any cars yet.</p>
+  <%}%>
+  <h3>YOUR LISTED CARS </h3>
+  <div class="containe" style="margin-top: 50px; margin: 20px ;">
+   
+    <div class="row" >
+      <%cars.forEach(function(car){%>
+      <div class="col-md-3"  >
+        <div class="card" >
+          <div class="card-body">
+            <img style="height: 200px; width: 200px;" class="img" src="<%=car.img%>" class="card-img-top" alt="...">
+            <h5 class="card-title">Model: <%=car.model%></h5>
+            <p class="card-text" style="text-transform: uppercase;">Number: <%=car.number%></p>
+            <p class="card-text">Rent: INR <%=car.rent%> /day</p>
+            <p class="card-text">Status: <%=car.status%></p>
+            <p class="card-text">Capacity: <%=car.capacity%></p>
+            <form  action="/agencydashboard" method="post">
+              <input type="hidden" name="carid" value="<%=car._id%>">
+              <button type="submit" class="btn btn-light" style="border: 1px black solid ; ">Update</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <%});%>
+    </div>
+  </div>
+<a role="button" class="btn btn-primary" href="/bookedcars">View Booked Cars</a>
+<br />
+<br />
+<a role="button" class="btn btn-primary" href="/addnewcars">Add Cars</a>
+<br />
+<br />
+<a role="button" class="btn btn-danger" href="/logout">Logout</a>
+<%- include('partials/footer') %>
